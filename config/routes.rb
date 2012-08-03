@@ -4,6 +4,8 @@ WikiwitnessDemo::Application.routes.draw do
   root to: 'static_pages#home'
 
   match '/signup',  to: 'users#new'
+  match '/signout',  to: 'sessions#destroy'
+  match '/signin',  to: 'sessions#new'
   match '/help',    to: 'static_pages#help'
   match '/about',   to: 'static_pages#about'
   match '/contact', to: 'static_pages#contact'
@@ -12,6 +14,7 @@ WikiwitnessDemo::Application.routes.draw do
   resources :users
   resources :events
   resources :narratives
+  resources :sessions, only: [:new, :create, :destroy]
 end
 
 
